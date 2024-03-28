@@ -4,7 +4,7 @@
 #  Released under the terms of the MIT License. See LICENSE for details.
 
 """
-gitupdater: the git repository updater
+git-updater: the git repository updater
 """
 
 __author__ = "AyakuraYuki"
