@@ -217,35 +217,35 @@ def _dispatch(base_path, callback, args):
     The given args are passed directly to the callback function after the repo.
     """
 
-    def _collect(paths, max_depth):
+    def _collect(_paths, _max_depth):
         """return all valid repo paths in the given paths, recursively"""
-        if max_depth == 0:
+        if _max_depth == 0:
             return []
 
-        valid = []
-        for path in paths:
+        _valid = []
+        for path in _paths:
             try:
                 Repo(path)
-                valid.append(path)
+                _valid.append(path)
             except exc.InvalidGitRepositoryError:
                 if not os.path.isdir(path):
                     continue
                 children = [os.path.join(path, v) for v in os.listdir(path)]
-                valid += _collect(children, max_depth - 1)
+                _valid += _collect(children, _max_depth - 1)
             except exc.NoSuchPathError:
                 continue
-        return valid
+        return _valid
 
-    def _get_basename(base, path):
+    def _get_basename(_base, path):
         """return a reasonable name for a repo path in the given base"""
-        if path.startswith(base + os.path.sep):
-            return path.split(base + os.path.sep, 1)[1]
-        prefix = os.path.commonprefix([base, path])
-        while not base.startswith(prefix + os.path.sep):
+        if path.startswith(_base + os.path.sep):
+            return path.split(_base + os.path.sep, 1)[1]
+        prefix = os.path.commonprefix([_base, path])
+        while not _base.startswith(prefix + os.path.sep):
             old = prefix
             prefix = os.path.split(prefix)[0]
             if prefix == old:
-                break  # prevent infinite loop, code protection
+                break  # prevent infinite loop, but should be almost impossible, just protect
         return path.split(prefix + os.path.sep, 1)[1]
 
     base = os.path.expanduser(base_path)

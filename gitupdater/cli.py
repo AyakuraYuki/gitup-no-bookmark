@@ -82,10 +82,10 @@ def main():
         _self_test()
         return
 
-    acted = False
+    _acted = False
     if args.directories_to_update:
         update_directories(args.directories_to_update, args)
-        acted = True
+        _acted = True
 
 
 def run():
