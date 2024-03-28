@@ -85,7 +85,7 @@ def _update_repository(repo: Repo, repo_name, args):
     except TypeError:
         active = None
 
-    if active.current_only:
+    if args.current_only:
         if not active:
             print(INDENT2, ERROR, "--current-only does not make sense with a detached HEAD")
             return
