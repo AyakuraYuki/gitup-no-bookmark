@@ -94,3 +94,11 @@ def run():
         main()
     except KeyboardInterrupt:
         print("stopped by user")
+
+
+if __name__ == '__main__':
+    """Thin wrapper for main()"""
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("stopped by user")
