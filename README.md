@@ -27,39 +27,48 @@ this tool is just an updater, and I removed all features that I **don't** need
 
 see more details in [earwig/git-repo-updater](https://github.com/earwig/git-repo-updater), **please**
 
-## about this project
+## About this project
 
 it is for knowing how `gitup` works, and make it pure to just update given base dir
+
+## Usage
+
+```text
+usage: git-updater [-t n] [-c] [-f] [-p] [-h] [-v] [--self-test] [path ...]
+
+easily update multiple git repositories at once
+
+updating repositories:
+  path                update this repository, or all repositories in contains if not a repo directly
+  -t n, --depth n     max recursion depth when searching for repositories in subdirectories, default is 3, use 0 fo no recursion, or -1 for unlimited
+  -c, --current-only  only fetch the remote tracked by the current branch instead of all remotes
+  -f, --fetch-only    only fetch remotes, don't try to fast-forward any branches
+  -p, --prune         after fetching, delete remote-tracking branches that no longer exist on their remote
+
+miscellaneous:
+  -h, --help          show this help message and exit
+  -v, --version       show program's version number and exit
+  --self-test         run integrated test suite and exit (required pytest)
+
+Both relative and absolute paths are accepted by all arguments.
+
+```
 
 ## Installation
 
 ### From source
 
-First
+First, get ready with Python 3.12 and pipenv installed, then clone this repository:
 
 ```shell
 git clone --depth=1 https://github.com/AyakuraYuki/gitup-no-bookmark.git
 cd gitup-no-bookmark
 ```
 
-Then to install for everyone:
+I use PyInstaller to package the standalone executable program, use the following command to package:
 
 ```shell
-sudo python setup.py install
-```
-
-or for just yourself (make sure you have `~/.local/bin` in your `PATH`):
-
-```shell
-python setup.py install --user
-```
-
-Finally, simply delete the `gitup-no-bookmark` directory and you're done!
-
-Note: If you are using Windows, you may wish to add a macro, so you can invoke
-`git-updater` in any directory. Note that `C:\Python27` refers to the
-directory where Python is installed:
-
-```shell
-DOSKEY git-updater=c:\python27\python.exe c:\python27\Scripts\git-updater $*
+pipenv shell
+pipenv sync
+pipenv run package
 ```

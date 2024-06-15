@@ -7,6 +7,7 @@ name = "pypi"
 pylint = "*"
 pytest = "*"
 twine = "*"
+pyinstaller = "*"
 
 [packages]
 GitPython = ">= 2.1.8"
@@ -19,3 +20,4 @@ python_version = "3"
 lint = "pylint --disable=missing-docstring --output-format=colorized gitupdater"
 cloc = "cloc --vcs=git"
 build = "python setup.py sdist bdist_wheel --universal"
+package = "pyinstaller --clean git-updater.spec"
