@@ -13,7 +13,7 @@ from gitupdater import __version__
 
 
 def run_cli(*args):
-    cmd = [sys.executable, "-m", "git-updater"] + list(args)
+    cmd = [sys.executable, "-m", "gitupdater"] + list(args)
     output = subprocess.check_output(cmd)
     return output.strip().decode("utf8")
 
