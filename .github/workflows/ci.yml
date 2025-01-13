@@ -1,4 +1,5 @@
 name: ci
+
 on: [push, pull_request]
 
 jobs:
@@ -14,9 +15,9 @@ jobs:
       - name: setup python-${{ matrix.python }}
         uses: actions/setup-python@main
         with:
-          python-version: $${{ matrix.python }}
-          cache: pipenv
-          cache-dependency-path: Pipfile
+          python-version: ${{ matrix.python }}
+          cache: "pipenv"
+          cache-dependency-path: "Pipfile"
       - name: install dependencies
         run: |
           pip install pipenv
