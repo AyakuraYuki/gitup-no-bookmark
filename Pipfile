@@ -8,6 +8,7 @@ pylint = "*"
 pytest = "*"
 twine = "*"
 pyinstaller = "*"
+exceptiongroup = {version = "*", markers = "python_version < '3.11'"}
 
 [packages]
 GitPython = ">= 2.1.8"
