@@ -1,0 +1,25 @@
+name: ci
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: [ "3.8", "3.9", "3.10", "3.11", "3.12", "3.13" ]
+    name: python-${{ matrix.python }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@main
+      - name: setup python-${{ matrix.python }}
+        uses: actions/setup-python@main
+        with:
+          python-version: $${{ matrix.python }}
+          cache: pipenv
+          cache-dependency-path: Pipfile
+      - name: install dependencies
+        run: |
+          pip install pipenv
+          pipenv install -d
+      - name: test
+        run: pipenv run pytest
