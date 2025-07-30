@@ -36,12 +36,6 @@ package = false
 name = "pypi"
 url = "https://pypi.org/simple"
 
-[tool.uv.scripts]
-lint = "pylint --disable=missing-docstring --output-format=colorized gitupdater"
-cloc = "cloc --vcs=git"
-build = "python setup.py sdist bdist_wheel --universal"
-package = "pyinstaller --clean git-updater.spec"
-
 [tool.pyright]
 pythonVersion = "3.9"
 venvPath = "."
@@ -49,3 +43,12 @@ venv = ".venv"
 
 [tool.ruff]
 target-version = "py39"
+
+
+#lint = "pylint --disable=missing-docstring --output-format=colorized gitupdater"
+#cloc = "cloc --vcs=git"
+#build = "python setup.py sdist bdist_wheel --universal"
+#package = "pyinstaller --clean git-updater.spec"
+#ruff-check = "uvx ruff check"
+#ruff-check-fix = "uvx ruff check --fix"
+#ruff-format = "uvx ruff format"
