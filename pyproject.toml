@@ -1,6 +1,16 @@
 [project]
-name = ""
-version = "0.0.1"
+name = "gitupdater"
+version = "0.0.2"
+description = "gitup-no-bookmark is gitup without bookmark, rewrite from earwig/git-repo-updater. I highly recommend you use the original version."
+authors = [
+    { name = "Ben Kurtovic", email = "ben@benkurtovic.com" },
+    { name = "Ayakura Yuki" },
+]
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["git", "repository", "pull", "update"]
+readme = "README.md"
+requires-python = ">=3.9"
 dependencies = [
     "GitPython>= 2.1.8",
     "colorama>= 0.3.9",

@@ -5,19 +5,11 @@
 
 import argparse
 import platform
-import sys
 
 from colorama import init as color_init, Style
 
 from gitupdater import __version__
 from gitupdater.update import update_directories
-
-
-def _decode(path):
-    """decode the given string using the system filesystem encoding"""
-    if sys.version_info.major > 2:
-        return path
-    return path.decode(sys.getfilesystemencoding())
 
 
 def _build_parser():
@@ -31,7 +23,7 @@ def _build_parser():
     group_m = parser.add_argument_group("miscellaneous")
 
     # directories_to_update
-    group_u.add_argument("directories_to_update", nargs="*", metavar="path", type=_decode,
+    group_u.add_argument("directories_to_update", nargs="*", metavar="path",
                          help="""update this repository, or all repositories in contains 
                          if not a repo directly""")
     # max_depth: -t --depth

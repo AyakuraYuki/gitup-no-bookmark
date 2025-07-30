@@ -114,9 +114,11 @@ def _fetch_remotes(remotes, prune):
         """return the local name of a remote or tag reference"""
         return ref.remote_head if isinstance(ref, RemoteRef) else ref.name
 
-    info = [("NEW_HEAD", "new branch", "new branches"),
-            ("NEW_TAG", "new tag", "new tags"),
-            ("FAST_FORWARD", "branch update", "branch updates")]
+    info = [
+        ("NEW_HEAD", "new branch", "new branches"),
+        ("NEW_TAG", "new tag", "new tags"),
+        ("FAST_FORWARD", "branch update", "branch updates"),
+    ]
     up_to_date = BLUE + "up to date" + RESET
 
     for remote in remotes:
