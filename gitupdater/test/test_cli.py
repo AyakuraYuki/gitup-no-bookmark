@@ -18,5 +18,7 @@ def run_cli(*args):
 
 def test_cli_version():
     output = run_cli("--version")
-    expected = "git-updater {0} (Python {1})".format(__version__, platform.python_version())
+    expected = "git-updater {0} (Python {1})".format(
+        __version__, platform.python_version()
+    )
     assert output == expected

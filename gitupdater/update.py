@@ -4,9 +4,7 @@
 # Released under the terms of the MIT License. See LICENSE for details.
 
 
-__all__ = [
-    "update_directories"
-]
+__all__ = ["update_directories"]
 
 import os.path
 import re
@@ -87,7 +85,11 @@ def _update_repository(repo: Repo, repo_name, args):
 
     if args.current_only:
         if not active:
-            print(INDENT2, ERROR, "--current-only does not make sense with a detached HEAD")
+            print(
+                INDENT2,
+                ERROR,
+                "--current-only does not make sense with a detached HEAD",
+            )
             return
         ref = active.tracking_branch()
         if not ref:
@@ -145,13 +147,19 @@ def _fetch_remotes(remotes, prune):
         except AssertionError:
             # seems to be the result of a bug in GitPython
             # this happens when git initiates an auto-gc during fetch
-            print(":", RED + "error:", "something went wrong in GitPython, "
-                                       "but the fetch might have been successful")
+            print(
+                ":",
+                RED + "error:",
+                "something went wrong in GitPython, "
+                "but the fetch might have been successful",
+            )
             return
 
         rlist = []
         for attr, singular, plural in info:
-            names = [_get_name(res.ref) for res in results if res.flags & getattr(res, attr)]
+            names = [
+                _get_name(res.ref) for res in results if res.flags & getattr(res, attr)
+            ]
             if names:
                 desc = singular if len(names) == 1 else plural
                 colored = GREEN + desc + RESET
@@ -199,8 +207,12 @@ def _update_branch(repo: Repo, branch: Head, is_active=False):
                 print(YELLOW + "skipped:", "not possible to fast-forward.")
     else:
         status = repo.git.merge_base(
-                branch.commit, upstream.commit, is_ancestor=True,
-                with_extended_output=True, with_exceptions=False)[0]
+            branch.commit,
+            upstream.commit,
+            is_ancestor=True,
+            with_extended_output=True,
+            with_exceptions=False,
+        )[0]
         if status != 0:
             print(YELLOW + "skipped:", "not possible to fast-forward.")
         else:

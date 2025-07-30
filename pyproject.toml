@@ -41,3 +41,11 @@ lint = "pylint --disable=missing-docstring --output-format=colorized gitupdater"
 cloc = "cloc --vcs=git"
 build = "python setup.py sdist bdist_wheel --universal"
 package = "pyinstaller --clean git-updater.spec"
+
+[tool.pyright]
+pythonVersion = "3.9"
+venvPath = "."
+venv = ".venv"
+
+[tool.ruff]
+target-version = "py39"
