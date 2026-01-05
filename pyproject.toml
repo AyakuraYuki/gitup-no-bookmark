@@ -12,7 +12,7 @@ keywords = ["git", "repository", "pull", "update"]
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-    "GitPython==3.1.45",
+    "GitPython==3.1.46",
     "colorama==0.4.6",
     "pyinstaller==6.15.0",
     "pylint==3.3.8",
